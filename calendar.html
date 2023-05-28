@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar - Francis Brother's Racing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="luxbar" class="luxbar-fixed">
+    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
+    <div class="luxbar-menu luxbar-menu-right luxbar-menu-dark">
+        <ul class="luxbar-navigation">
+            <li class="luxbar-header">
+                <a href="#" class="luxbar-brand">Francis Brothers Racing</a>
+                <label class="luxbar-hamburger luxbar-hamburger-spin" 
+                id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
+            </li>
+            <li class="luxbar-item"><a href="index.html">Home</a></li>
+            <li class="luxbar-item"><a href="about.html">About Us</a></li>
+            <li class="luxbar-item"><a href="gallery.html">Gallery</a></li>
+            <li class="luxbar-item"><a href="sponsors.html">Sponsors</a></li>
+            <li class="luxbar-item"><a href="calendar.html">Calendar</a></li>
+            <li class="luxbar-item"><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="calendar">
+      <div class="controls">
+        <select id="month" onchange="updateCalendar()">
+          <option value="0">January</option>
+          <option value="1">February</option>
+          <option value="2">March</option>
+          <option value="3">April</option>
+          <option value="4">May</option>
+          <option value="5">June</option>
+          <option value="6">July</option>
+          <option value="7">August</option>
+          <option value="8">September</option>
+          <option value="9">October</option>
+          <option value="10">November</option>
+          <option value="11">December</option>
+        </select>
+        <select id="year" onchange="updateCalendar()">
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+        </select>
+      </div>
+      <div class="calendar-header" id="calendar-header"></div>
+      <table class="calendar-table" id="calendar-table">
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <div class="thank-you-section">
+        <h2>Special Thanks to Our Sponsors</h2>
+      <div class="sponsor-list">
+        <div class="sponsor">
+          <a href="https://www.perry.co.nz/our-investments/three-peaks-manuka-honey/" style="text-decoration:none" target="blank"><img src="/photos/collective.jpg" alt="The Manuka Collective"></a>
+          <p>The Manuka Collective</p>
+        </div>
+        <div class="sponsor">
+          <a href="https://www.flettsfencing.solutions" style="text-decoration:none" target="blank"><img src="/photos/flett.jpg" alt="Fletts Fencing Solutions"></a>
+          <p>Fletts Fencing Solutions</p>
+        </div>
+        <div class="sponsor">
+          <a href="https://www.facebook.com/profile.php?id=100068092765061" style="text-decoration:none" target="blank"><img src="/photos/sticker.jpg" alt="Marc 1 Tyres Hamilton"></a>
+          <p>Marc 1 Tyres Hamilton</p>
+        </div>
+      </div>
+    </div>
+    <p>&copy; 2023 Francis Brother's Racing. No rights reserved.</p>
+  </footer>
+  <script>
+    // Function to update the calendar based on selected month and year
+    function updateCalendar() {
+      var monthElement = document.getElementById('month');
+      var yearElement = document.getElementById('year');
+      var calendarHeader = document.getElementById('calendar-header');
+      var calendarBody = document.getElementById('calendar-body');
+      
+      var month = parseInt(monthElement.value);
+      var year = parseInt(yearElement.value);
+      
+      // Get the number of days in the selected month
+      var daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      // Get the index of the first day of the month (0-6, where 0 is Sunday)
+      var firstDayIndex = new Date(year, month, 1).getDay();
+      
+      // Clear the calendar header and body
+      calendarHeader.innerHTML = '';
+      calendarBody.innerHTML = '';
+      
+      // Update the calendar header
+      var monthName = monthElement.options[month].text;
+      calendarHeader.textContent = monthName + ' ' + year;
+      
+      // Create the calendar rows and cells
+      var date = 1;
+      for (var i = 0; i < 6; i++) {
+        var row = document.createElement('tr');
+        
+        for (var j = 0; j < 7; j++) {
+          if (i === 0 && j < firstDayIndex) {
+            // Create empty cells before the first day of the month
+            var cell = document.createElement('td');
+            row.appendChild(cell);
+          } else if (date > daysInMonth) {
+            // Stop creating cells if all days of the month have been added
+            break;
+          } else {
+            // Create cells with the day number
+            var cell = document.createElement('td');
+            cell.textContent = date;
+            row.appendChild(cell);
+            date++;
+          }
+        }
+        
+        calendarBody.appendChild(row);
+      }
+      var cells = document.querySelectorAll('.calendar-table td');
+      cells.forEach(function(cell) {
+        cell.addEventListener('click', function() {
+          var day = this.textContent;
+          var month = parseInt(monthElement.value) + 1; // Add 1 to month value to match JavaScript Date object
+          var year = parseInt(yearElement.value);
+          var date = year + '-' + ('0' + month).slice(-2) + '-' + ('0' + day).slice(-2);
+          var link = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' + date; // Update the link to your desired HTML file
+          window.location.href = link;
+        });
+      });
+    }
+    var currentDate = new Date();
+    var currentYear = currentDate.getFullYear();
+    var currentMonth = currentDate.getMonth();
+    
+    // Set the default values of the month and year dropdowns
+    var monthElement = document.getElementById('month');
+    var yearElement = document.getElementById('year');
+    monthElement.value = currentMonth;
+    yearElement.value = currentYear;
+    // Call the updateCalendar function initially
+    updateCalendar();
+  </script>
+</body>
+</html>
