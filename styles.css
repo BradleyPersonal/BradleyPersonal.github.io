@@ -187,6 +187,7 @@
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
+    width: 14%;
   }
   
   .calendar-table th {
