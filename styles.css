@@ -129,10 +129,9 @@
   }
   
   .sponsor-card img {
-    width: 150px;
-    height: 150px;
+    height: 130px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 6%;
     margin-bottom: 20px;
   }
   
