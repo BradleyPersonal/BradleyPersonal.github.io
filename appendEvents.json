@@ -1,0 +1,24 @@
+[
+    {
+        "date": "13",
+        "month": "07",
+        "time": "10:00am",
+        "fullDate": "13/07/23",
+        "track": "Meremre Dirt Track",
+        "trackAddress": "This is filler at the moment",
+        "car": "Production Saloon",
+        "imgSource": "/photos/mere.jpg",
+        "eventName": "Production Saloon Super Slam!"
+    },
+    {
+        "date": "17",
+        "month": "09",
+        "time": "11:40am",
+        "fullDate": "17/09/23",
+        "track": "Waiuku Forest",
+        "trackAddress": "This is filler at the moment",
+        "car": "Citroen",
+        "imgSource": "/photos/waiuku.jpg",
+        "eventName": "Citroen's Big Day Out!"
+    }
+]
