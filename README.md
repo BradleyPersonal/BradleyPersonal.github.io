@@ -1,9 +1,9 @@
 > # **CLEANER.README**
-
+>
 > ## **Author:** Bradley Francis
-
+>
 > ## **Language(s):** HTML, CSS
-
+>
 > ## **Creation Date:** 04/11/2024
 
 ### **Overview:**
@@ -19,3 +19,8 @@ The purpose of this repositry is mainly to provide a platform to host the protot
 This is not a final product, some features may not work, and it may break entirely. If there are any issues you see, please leave them in the indicated space below, plain text is fine, I can format it later.
 
 #### Leave notes below this title:
+
+1. 
+2. 
+3. 
+4. 
