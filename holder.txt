@@ -1,0 +1,27 @@
+
+
+
+        <a href="windscreen-wash.html" class="product-card">
+            <img src="photos/winsdcreen-wash.png" alt="Product 1">
+            <h2>Windscreen Washer</h2>
+            <p>The best fuckin' winsdcreen washer around!</p>
+            <span class="price">$19.99</span>
+        </a>
+
+
+
+        .product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+
+
+
+
+
